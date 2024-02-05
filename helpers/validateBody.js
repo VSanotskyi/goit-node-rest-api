@@ -1,13 +1,9 @@
-import HttpError from "./HttpError.js";
+import {HttpError} from "./index.js";
 
-const validateBody = (schema) => {
-    return (req, _, next) => {
-        const {error} = schema.validate(req.body);
-        if (error) {
-            next(HttpError(400, error.message));
-        }
-        next();
-    };
+const validateBody = (schema) => (req, _, next) => {
+    const {error} = schema.validate(req.body);
+    if (error) next(HttpError(400, error.message));
+    next();
 };
 
 export default validateBody;
