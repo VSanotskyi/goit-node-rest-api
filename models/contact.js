@@ -1,4 +1,4 @@
-import mongoose from "mongoose";
+import mongoose, {Schema} from "mongoose";
 import Joi from "joi";
 
 const contactSchema = new mongoose.Schema({
@@ -16,6 +16,10 @@ const contactSchema = new mongoose.Schema({
         type: Boolean,
         default: false,
     },
+    owner: {
+        type: Schema.Types.ObjectId,
+        ref: "user",
+    }, //todo
 });
 
 export const createContactSchema = Joi.object({
