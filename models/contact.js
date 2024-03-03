@@ -19,7 +19,7 @@ const contactSchema = new mongoose.Schema({
     owner: {
         type: Schema.Types.ObjectId,
         ref: "user",
-    }, //todo
+    },
 });
 
 export const createContactSchema = Joi.object({
@@ -27,6 +27,7 @@ export const createContactSchema = Joi.object({
     email: Joi.string(),
     phone: Joi.string(),
     favorite: Joi.bool(),
+    owner: Joi.string(),
 });
 
 export const updateContactSchema = Joi.object({
