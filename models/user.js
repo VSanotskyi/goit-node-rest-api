@@ -20,6 +20,9 @@ const userSchema = new mongoose.Schema({
         type: String,
         default: null,
     },
+    avatarURL: {
+        type: String,
+    },
 });
 
 const authUserSchema = Joi.object({
@@ -27,6 +30,7 @@ const authUserSchema = Joi.object({
     password: Joi.string().required(),
     subscription: Joi.string(),
     token: Joi.string(),
+    avatarURL: Joi.string(),
 });
 
 const schemas = {
