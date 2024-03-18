@@ -10,5 +10,6 @@ const router = express.Router();
 router.post("/register", validateBody(schemas.authUserSchema), authControllers.register);
 router.post("/login", validateBody(schemas.authUserSchema), authControllers.login);
 router.get("/logout", auth, authControllers.logout);
+router.get("/verify/:verificationToken", authControllers.verify);
 
 export default router;

@@ -12,6 +12,6 @@ const router = express.Router();
 
 router.use("/contacts", authRouter);
 router.use("/contacts", auth, contactRoutes);
-router.use("/users", auth, userRouter);
+router.use("/users", userRouter);
 
 export default router;

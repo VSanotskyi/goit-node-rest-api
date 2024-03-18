@@ -23,6 +23,14 @@ const userSchema = new mongoose.Schema({
     avatarURL: {
         type: String,
     },
+    verify: {
+        type: Boolean,
+        default: false,
+    },
+    verificationToken: {
+        type: String,
+        required: [true, "Verify token is required"],
+    },
 });
 
 const authUserSchema = Joi.object({
@@ -33,8 +41,13 @@ const authUserSchema = Joi.object({
     avatarURL: Joi.string(),
 });
 
+const verifyUserSchema = Joi.object({
+    email: Joi.string().email(), // .required(),
+});
+
 const schemas = {
     authUserSchema,
+    verifyUserSchema,
 };
 
 const User = mongoose.model("User", userSchema);
